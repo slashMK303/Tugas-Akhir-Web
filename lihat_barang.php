@@ -81,7 +81,7 @@ $barang = mysqli_query($conn, "SELECT * FROM barang");
 
         <?= isset($pesan) ? $pesan : '' ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <?php while ($b = mysqli_fetch_assoc($barang)) { ?>
                 <div class="bg-white rounded shadow p-4">
                     <img src="admin/uploads/<?= $b['gambar'] ?>" alt="<?= $b['nama'] ?>" class="w-full h-auto object-cover mb-2 rounded">
