@@ -14,7 +14,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'pembeli') {
 
 <head>
     <title>Dashboard Pembeli</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="bg-gray-50">

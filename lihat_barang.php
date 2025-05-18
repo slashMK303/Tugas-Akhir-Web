@@ -52,21 +52,24 @@ $barang = mysqli_query($conn, "SELECT * FROM barang");
 
 <head>
     <title>Toko Sembako</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-amber-50">
 
     <!-- Navigasi -->
-    <nav class="bg-white shadow p-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold">Toko Sembako</h1>
+    <nav class="bg-amber-50 shadow p-4 flex justify-between items-center">
+        <h1 class="text-xl text-stone-800 font-bold">Toko Sembako</h1>
         <div>
             <?php if (!isset($_SESSION['user'])) { ?>
-                <a href="auth/login.php" class="text-blue-500 hover:underline mr-4">Login</a>
-                <a href="auth/register.php" class="text-blue-500 hover:underline">Register</a>
+                <a href="auth/login.php" class="text-amber-500 hover:underline mr-4">Login</a>
+                <a href="auth/register.php" class="text-amber-500 hover:underline">Register</a>
             <?php } else if ($_SESSION['user']['role'] == 'pembeli') { ?>
-                <span class="mr-4">Halo, <?= $_SESSION['user']['username'] ?>!</span>
-                <a href="pembeli/dashboard.php" class="text-blue-500 hover:underline mr-4">Dashboard</a>
+                <span class="mr-4 text-stone-800">Halo, <?= $_SESSION['user']['username'] ?>!</span>
+                <a href="pembeli/dashboard.php" class="text-amber-500 hover:underline mr-4">Dashboard</a>
                 <a href="auth/logout.php" class="text-red-500 hover:underline">Logout</a>
             <?php } else { ?>
                 <span class="mr-4">Halo, <?= $_SESSION['user']['username'] ?>!</span>
@@ -77,26 +80,26 @@ $barang = mysqli_query($conn, "SELECT * FROM barang");
 
     <!-- Daftar Barang -->
     <div class="max-w-4xl mx-auto mt-10">
-        <h2 class="text-xl font-bold mb-4">Daftar Barang</h2>
+        <h2 class="text-xl text-stone-800 font-bold mb-4">Daftar Barang</h2>
 
         <?= isset($pesan) ? $pesan : '' ?>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <?php while ($b = mysqli_fetch_assoc($barang)) { ?>
-                <div class="bg-white rounded shadow p-4">
+                <div class="bg-amber-950/80 rounded shadow p-4 text-amber-50">
                     <img src="admin/uploads/<?= $b['gambar'] ?>" alt="<?= $b['nama'] ?>" class="w-full h-auto object-cover mb-2 rounded">
                     <h3 class="text-xl font-bold"><?= $b['nama'] ?></h3>
-                    <p class="text-gray-600">Rp <?= number_format($b['harga']) ?></p>
-                    <p class="text-gray-600">Stok: <?= $b['stok'] ?></p>
+                    <p class="text-amber-100">Rp <?= number_format($b['harga']) ?></p>
+                    <p class="text-amber-600">Stok: <?= $b['stok'] ?></p>
                     <div class="flex space-x-2 mt-2">
                         <?php if ($pembeli_id) { ?>
                             <form method="post" class="flex space-x-2">
                                 <input type="hidden" name="barang_id" value="<?= $b['id'] ?>">
-                                <input type="number" name="jumlah" min="1" max="<?= $b['stok'] ?>" class="border rounded px-2 w-16" required>
-                                <button type="submit" name="beli" class="bg-blue-500 text-white px-3 py-1 rounded">Beli</button>
+                                <input type="number" name="jumlah" min="1" max="<?= $b['stok'] ?>" class="border border-amber-50 rounded px-2 w-16" required>
+                                <button type="submit" name="beli" class="bg-amber-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-amber-600">Beli</button>
                             </form>
                         <?php } else { ?>
-                            <a href="auth/login.php" class="bg-yellow-400 text-black px-3 py-1 rounded">Login untuk Beli</a>
+                            <a href="auth/login.php" class="bg-amber-500 cursor-pointer hover:bg-amber-600 text-amber-50 px-3 py-1 rounded">Login untuk Beli</a>
                         <?php } ?>
                     </div>
                 </div>

@@ -35,17 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-amber-50 overflow-hidden">
     <!-- Navigasi -->
-    <nav class="bg-white shadow p-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold"><a href="../index.php">Toko Sembako</a></h1>
+    <nav class="bg-amber-50 shadow p-4 flex justify-between items-center">
+        <h1 class="text-xl text-stone-800 font-bold"><a href="../index.php">Toko Sembako</a></h1>
         <div>
             <?php if (!isset($_SESSION['user'])) { ?>
-                <a href="/auth/login.php" class="text-blue-500 hover:underline mr-4">Login</a>
-                <a href="/auth/register.php" class="text-blue-500 hover:underline">Register</a>
+                <a href="/auth/login.php" class="text-amber-500 hover:underline mr-4">Login</a>
+                <a href="/auth/register.php" class="text-amber-500 hover:underline">Register</a>
             <?php } else { ?>
                 <span class="mr-4">Halo, <?= $_SESSION['user']['username'] ?>!</span>
                 <a href="/auth/logout.php" class="text-red-500 hover:underline">Logout</a>
@@ -54,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <div class="h-screen flex items-center justify-center">
-        <form method="post" class="bg-white p-6 rounded shadow-md w-80 space-y-4">
-            <h2 class="text-lg font-bold text-center">Daftar Akun Pembeli</h2>
+        <form method="post" class="bg-amber-950/70 p-6 rounded shadow-md w-80 space-y-4">
+            <h2 class="text-lg text-amber-50 font-bold text-center">Daftar Akun Pembeli</h2>
             <?php if (isset($error)) echo "<div class='text-red-500 text-sm'>$error</div>"; ?>
-            <input type="text" name="username" placeholder="Username" class="border w-full p-2 rounded" required>
-            <input type="password" name="password" placeholder="Password" class="border w-full p-2 rounded" required>
-            <button type="submit" class="w-full bg-green-500 text-white py-2 rounded">Daftar</button>
-            <p class="text-center text-sm">Sudah punya akun? <a href="login.php" class="text-blue-500 hover:underline">Login</a></p>
+            <input type="text" name="username" placeholder="Username" class="border border-gray-300 text-amber-50 w-full p-2 rounded focus:outline-amber-50" required>
+            <input type="password" name="password" placeholder="Password" class="border border-gray-300 text-amber-50 w-full p-2 rounded focus:outline-amber-50" required>
+            <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded cursor-pointer hover:bg-amber-600">Daftar</button>
+            <p class="text-center text-amber-50 text-sm">Sudah punya akun? <a href="login.php" class="text-amber-500 hover:underline">Login</a></p>
         </form>
     </div>
 </body>
