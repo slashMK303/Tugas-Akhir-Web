@@ -19,7 +19,7 @@ $laporan = mysqli_query($conn, "SELECT ps.id, ps.tanggal, u.username, dp.total F
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-amber-50">
 
     <?php include 'dashboard.php'; ?>
 

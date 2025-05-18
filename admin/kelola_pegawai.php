@@ -35,7 +35,7 @@ $pegawai = mysqli_query($conn, "SELECT * FROM users WHERE role='pegawai'");
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-amber-50">
 
     <?php include 'dashboard.php'; ?>
 

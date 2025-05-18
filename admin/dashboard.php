@@ -16,7 +16,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-amber-50">
 
     <div class="max-w-4xl mx-auto mt-10">
         <h1 class="text-2xl font-bold mb-6">Dashboard Admin</h1>

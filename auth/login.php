@@ -47,13 +47,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <div class="h-screen flex items-center justify-center">
-        <form method="post" class="bg-amber-950/70 p-6 rounded shadow-md w-80 space-y-4">
+        <form method="post" class="bg-amber-950/70 p-6 md:p-12 rounded shadow-md w-full md:max-w-xl space-y-6">
             <h2 class="text-lg text-amber-50 font-bold text-center">Login</h2>
             <?php if (isset($error)) echo "<div class='text-red-500 text-sm'>$error</div>"; ?>
-            <input type="text" name="username" placeholder="Username" class="border text-amber-50 border-gray-300 w-full p-2 rounded focus:outline-amber-50" required>
-            <input type="password" name="password" placeholder="Password" class="border text-amber-50 border-gray-300 w-full p-2 rounded focus:outline-amber-50" required>
-            <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded cursor-pointer hover:bg-amber-600">Login</button>
-            <p class="text-center text-amber-50 text-sm">Belum punya akun? <a href="register.php" class="text-amber-500 hover:underline">Daftar</a></p>
+            <div class="flex flex-col space-y-4 md:space-y-6">
+                <div class="flex flex-col md:flex-row space-x-0 md:space-x-4">
+                    <input type="text" name="username" placeholder="Username" class="border text-amber-50 border-gray-300 w-full p-2 rounded focus:outline-amber-50" required>
+                </div>
+                <div class="flex flex-col md:flex-row space-x-0 md:space-x-4">
+                    <input type="password" name="password" placeholder="Password" class="border text-amber-50 border-gray-300 w-full p-2 rounded focus:outline-amber-50" required>
+                </div>
+                <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded cursor-pointer hover:bg-amber-600">Login</button>
+                <p class="text-center text-amber-50 text-sm">Belum punya akun? <a href="register.php" class="text-amber-500 hover:underline">Daftar</a></p>
+            </div>
         </form>
     </div>
 </body>
