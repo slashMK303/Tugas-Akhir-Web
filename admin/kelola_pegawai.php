@@ -27,47 +27,33 @@ if (isset($_GET['hapus'])) {
 $pegawai = mysqli_query($conn, "SELECT * FROM users WHERE role='pegawai'");
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php include 'dashboard.php'; ?>
 
-<head>
-    <title>Kelola Pegawai</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
+<div class="max-w-4xl mx-auto mt-10">
+    <h2 class="text-2xl font-bold mb-6">Kelola Pegawai</h2>
 
-<body class="bg-amber-50">
+    <form method="post" class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+        <input name="username" placeholder="Username" class="border p-2 border-amber-500 rounded focus:outline-amber-500" required>
+        <input name="password" type="password" placeholder="Password" class="border p-2 border-amber-500 rounded focus:outline-amber-500" required>
+        <button name="tambah" class="col-span-1 md:col-span-2 bg-amber-500 cursor-pointer text-white p-2 rounded hover:bg-amber-600">Tambah Pegawai</button>
+    </form>
 
-    <?php include 'dashboard.php'; ?>
-
-    <div class="max-w-4xl mx-auto mt-10">
-        <h2 class="text-2xl font-bold mb-6">Kelola Pegawai</h2>
-
-        <form method="post" class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
-            <input name="username" placeholder="Username" class="border p-2 rounded" required>
-            <input name="password" type="password" placeholder="Password" class="border p-2 rounded" required>
-            <button name="tambah" class="col-span-1 md:col-span-2 bg-green-500 text-white p-2 rounded">Tambah Pegawai</button>
-        </form>
-
-        <table class="w-full border text-sm">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="p-2 border">Username</th>
-                    <th class="p-2 border">Aksi</th>
+    <table class="w-full border text-sm">
+        <thead class="bg-amber-100">
+            <tr>
+                <th class="p-2 border border-gray-200">Username</th>
+                <th class="p-2 border border-gray-200">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($p = mysqli_fetch_assoc($pegawai)) { ?>
+                <tr class="border-b">
+                    <td class="p-2 border border-gray-200"><?= $p['username'] ?></td>
+                    <td class="p-2 border border-gray-200">
+                        <a href="?hapus=<?= $p['id'] ?>" onclick="return confirm('Hapus pegawai ini?')" class="text-red-500 hover:underline">Hapus</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php while ($p = mysqli_fetch_assoc($pegawai)) { ?>
-                    <tr class="border-b">
-                        <td class="p-2 border"><?= $p['username'] ?></td>
-                        <td class="p-2 border">
-                            <a href="?hapus=<?= $p['id'] ?>" onclick="return confirm('Hapus pegawai ini?')" class="text-red-500 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-
-</body>
-
-</html>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>

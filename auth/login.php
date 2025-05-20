@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="flex flex-col md:flex-row space-x-0 md:space-x-4">
                     <input type="password" name="password" placeholder="Password" class="border text-amber-50 border-gray-300 w-full p-2 rounded focus:outline-amber-50" required>
                 </div>
-                <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded cursor-pointer hover:bg-amber-600">Login</button>
+                <button type="submit" class="w-full bg-amber-500 text-amber-50 py-2 rounded cursor-pointer hover:bg-amber-600">Login</button>
                 <p class="text-center text-amber-50 text-sm">Belum punya akun? <a href="register.php" class="text-amber-500 hover:underline">Daftar</a></p>
             </div>
         </form>

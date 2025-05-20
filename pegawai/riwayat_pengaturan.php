@@ -14,19 +14,19 @@ $riwayat = mysqli_query($conn, "SELECT p.pesanan_id, u.username, p.status_pengan
 <div class="max-w-4xl mx-auto mt-10">
     <h2 class="text-xl font-bold mb-4">Riwayat Pengantaran</h2>
     <table class="w-full border">
-        <thead class="bg-gray-100">
+        <thead class="bg-amber-100">
             <tr>
-                <th>ID Pesanan</th>
-                <th>Pembeli</th>
-                <th>Status Pengantaran</th>
+                <th class="p-2 border border-gray-200">ID Pesanan</th>
+                <th class="p-2 border border-gray-200">Pembeli</th>
+                <th class="p-2 border border-gray-200">Status Pengantaran</th>
             </tr>
         </thead>
         <tbody>
             <?php while ($r = mysqli_fetch_assoc($riwayat)) { ?>
                 <tr class="border-b">
-                    <td class="p-2 border"><?= $r['pesanan_id'] ?></td>
-                    <td class="p-2 border"><?= $r['username'] ?></td>
-                    <td class="p-2 border"><?= $r['status_pengantaran'] ?></td>
+                    <td class="p-2 border border-gray-200"><?= $r['pesanan_id'] ?></td>
+                    <td class="p-2 border border-gray-200"><?= $r['username'] ?></td>
+                    <td class="p-2 border border-gray-200"><?= $r['status_pengantaran'] ?></td>
                 </tr>
             <?php } ?>
         </tbody>

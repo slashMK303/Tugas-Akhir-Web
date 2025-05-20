@@ -32,29 +32,29 @@ $pesanan = mysqli_query($conn, "SELECT p.pesanan_id, u.username, p.status_pengan
 <div class="max-w-4xl mx-auto mt-10">
     <h2 class="text-xl font-bold mb-4">Daftar Pengantaran</h2>
     <table class="w-full border">
-        <thead class="bg-gray-100">
+        <thead class="bg-amber-100">
             <tr>
-                <th>ID Pesanan</th>
-                <th>Pembeli</th>
-                <th>Status</th>
-                <th>Update</th>
+                <th class="p-2 border border-gray-200">ID Pesanan</th>
+                <th class="p-2 border border-gray-200">Pembeli</th>
+                <th class="p-2 border border-gray-200">Status</th>
+                <th class="p-2 border border-gray-200">Update</th>
             </tr>
         </thead>
         <tbody>
             <?php while ($p = mysqli_fetch_assoc($pesanan)) { ?>
                 <tr class="border-b">
-                    <td class="p-2 border"><?= $p['pesanan_id'] ?></td>
-                    <td class="p-2 border"><?= $p['username'] ?></td>
-                    <td class="p-2 border"><?= $p['status_pengantaran'] ?></td>
-                    <td class="p-2 border">
+                    <td class="p-2 border border-gray-200"><?= $p['pesanan_id'] ?></td>
+                    <td class="p-2 border border-gray-200"><?= $p['username'] ?></td>
+                    <td class="p-2 border border-gray-200"><?= $p['status_pengantaran'] ?></td>
+                    <td class="p-2 border border-gray-200">
                         <form method="post">
                             <input type="hidden" name="pesanan_id" value="<?= $p['pesanan_id'] ?>">
-                            <select name="status_pengantaran" class="border rounded px-2">
+                            <select name="status_pengantaran" class="border border-amber-500 rounded px-2">
                                 <option value="belum" <?= $p['status_pengantaran'] == 'belum' ? 'selected' : '' ?>>Belum</option>
                                 <option value="dikirim" <?= $p['status_pengantaran'] == 'dikirim' ? 'selected' : '' ?>>Dikirim</option>
                                 <option value="selesai" <?= $p['status_pengantaran'] == 'selesai' ? 'selected' : '' ?>>Selesai</option>
                             </select>
-                            <button type="submit" name="update_status" class="bg-blue-500 text-white px-3 py-1 rounded">Update</button>
+                            <button type="submit" name="update_status" class="bg-amber-500 text-white px-3 py-1 cursor-pointer rounded">Update</button>
                         </form>
                     </td>
                 </tr>
