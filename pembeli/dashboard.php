@@ -27,6 +27,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'pembeli') {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
             <a href="/lihat_barang.php" class="p-4 bg-amber-500 text-amber-50 rounded shadow hover:bg-amber-600 text-center col-span-3">Lihat Barang</a>
+            <a href="keranjang.php" class="p-4 bg-amber-500 text-amber-50 rounded shadow hover:bg-amber-600 text-center col-span-3">Keranjang</a>
             <a href="riwayat.php" class="p-4 bg-amber-500 text-amber-50 rounded shadow hover:bg-amber-600 text-center col-span-3">Riwayat Pesanan</a>
         </div>
     </div>

@@ -7,13 +7,21 @@ include '../config/koneksi.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+
+    // Ambil data user berdasarkan username
+    $query = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($conn, $query);
+
     if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
-        $_SESSION['user'] = $user;
-        header("Location: ../index.php");
-        exit();
+        // Verifikasi password yang dimasukkan dengan hashed password di database
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user'] = $user;
+            header("Location: ../index.php");
+            exit();
+        } else {
+            $error = "Login gagal. Username atau password salah.";
+        }
     } else {
         $error = "Login gagal. Username atau password salah.";
     }
@@ -32,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="bg-amber-50 overflow-hidden">
 
-    <!-- Navigasi -->
     <nav class="bg-amber-50 shadow p-4 flex relative justify-between items-center">
         <h1 class="text-xl text-stone-800 font-bold"><a href="../index.php">Toko Sembako</a></h1>
         <div>

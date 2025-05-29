@@ -93,7 +93,7 @@ $barang = mysqli_query($conn, "SELECT * FROM barang");
 
     <?php if ($editMode && $editData['gambar']) { ?>
         <p class="text-sm mb-4">Gambar saat ini:</p>
-        <img src="uploads/?= $editData['gambar'] ?>" class="w-32 h-32 object-cover rounded mb-4">
+        <img src="uploads/<?= $editData['gambar'] ?>" class="w-32 h-32 object-cover rounded mb-4">
     <?php } ?>
 
 

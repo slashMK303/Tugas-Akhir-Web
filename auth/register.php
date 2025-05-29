@@ -12,8 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($cek) > 0) {
         $error = "Username sudah digunakan.";
     } else {
+        // Hash password sebelum menyimpan
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         // Simpan ke database
-        $query = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')";
+        $query = "INSERT INTO users (username, password, role) VALUES ('$username', '$hashed_password', '$role')";
         mysqli_query($conn, $query);
 
         // Login otomatis
@@ -39,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body class="bg-amber-50 overflow-hidden">
-    <!-- Navigasi -->
     <nav class="bg-amber-50 shadow p-4 flex justify-between items-center">
         <h1 class="text-xl text-stone-800 font-bold"><a href="../index.php">Toko Sembako</a></h1>
         <div>
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <div class="h-screen flex items-center justify-center">
-        <form method="post" class="bg-amber-950/70 p-6 rounded shadow-md w-80 space-y-4">
+        <form method="post" class="bg-amber-950/70 p-6 md:p-12 rounded shadow-md w-full md:max-w-xl space-y-6">
             <h2 class="text-lg text-amber-50 font-bold text-center">Daftar Akun Pembeli</h2>
             <?php if (isset($error)) echo "<div class='text-red-500 text-sm'>$error</div>"; ?>
             <input type="text" name="username" placeholder="Username" class="border border-gray-300 text-amber-50 w-full p-2 rounded focus:outline-amber-50" required>
