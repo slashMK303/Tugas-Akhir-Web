@@ -108,7 +108,7 @@ $barang = mysqli_query($conn, "SELECT * FROM barang");
             <?php if (mysqli_num_rows($barang) > 0) { ?>
                 <?php while ($b = mysqli_fetch_assoc($barang)) { ?>
                     <div class="bg-amber-950/80 rounded shadow p-4 text-amber-50">
-                        <img src="admin/uploads/<?= $b['gambar'] ?>" alt="<?= $b['nama'] ?>" class="w-full h-auto object-cover mb-2 rounded">
+                        <img src="admin/uploads/<?= $b['gambar'] ?>" alt="<?= $b['nama'] ?>" class="w-full h-[129px] object-cover mb-2 rounded bg-amber-100">
                         <h3 class="text-xl font-bold"><?= $b['nama'] ?></h3>
                         <p class="text-amber-100">Rp <?= number_format($b['harga']) ?></p>
                         <p class="text-amber-600">Stok: <?= $b['stok'] ?></p>
