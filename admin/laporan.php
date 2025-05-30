@@ -8,7 +8,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
 }
 
 // Ambil semua pesanan untuk laporan
-$laporan_pesanan = mysqli_query($conn, "SELECT ps.id AS pesanan_id, ps.tanggal, u.username AS nama_pembeli, ps.status, p.status_pengantaran
+// Menambahkan u.alamat untuk menampilkan Alamat Penerima
+$laporan_pesanan = mysqli_query($conn, "SELECT ps.id AS pesanan_id, ps.tanggal, u.username AS nama_pembeli, u.alamat, ps.status, p.status_pengantaran
                                        FROM pesanan ps
                                        JOIN users u ON ps.pembeli_id = u.id
                                        LEFT JOIN pengantaran p ON ps.id = p.pesanan_id
@@ -37,13 +38,15 @@ $grand_total_penjualan = 0; // Untuk menghitung total penjualan keseluruhan
             <div class="bg-white rounded shadow-md p-4 mb-6 border border-gray-200">
                 <div class="flex justify-between items-center mb-3 pb-2 border-b">
                     <h3 class="text-lg font-semibold text-stone-800">Pesanan ID: <?= $lp['pesanan_id'] ?></h3>
-                    <span class="text-gray-600 text-sm"><?= date('d M Y H:i', strtotime($lp['tanggal'])) ?></span>
+                    <span class="text-gray-600 text-sm">Pembeli: <?= $lp['nama_pembeli'] ?></span>
                 </div>
                 <div class="mb-3">
-                    <p class="text-gray-700">Pembeli: <span class="font-medium"><?= $lp['nama_pembeli'] ?></span></p>
+                    <p class="text-gray-700">Alamat Penerima: <span class="font-medium"><?= htmlspecialchars($lp['alamat']) ?></span></p>
+                    <p class="text-gray-700">Tanggal Pesanan: <span class="font-medium"><?= date('d M Y H:i', strtotime($lp['tanggal'])) ?></span></p>
                     <p class="text-gray-700">Status Pesanan: <span class="font-medium text-blue-600"><?= ucfirst($lp['status']) ?></span></p>
-                    <p class="text-gray-700">Status Pengantaran: <span class="font-medium text-green-600"><?= ucfirst($lp['status_pengantaran'] ?? 'Belum Ditentukan') ?></span></p>
+                    <p class="text-gray-700">Status Pengantaran: <span class="font-medium text-green-600"><?= ucfirst($lp['status_pengantaran'] ?? 'Belum ada') ?></span></p>
                 </div>
+
                 <table class="w-full text-sm mb-4">
                     <thead class="bg-gray-50">
                         <tr>
@@ -54,28 +57,27 @@ $grand_total_penjualan = 0; // Untuk menghitung total penjualan keseluruhan
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($dbl = mysqli_fetch_assoc($detail_barang_laporan)) {
-                            $total_pesanan_ini += $dbl['subtotal_item'];
+                        <?php while ($dbp = mysqli_fetch_assoc($detail_barang_laporan)) {
+                            $total_pesanan_ini += $dbp['subtotal_item'];
                         ?>
                             <tr class="border-b">
-                                <td class="p-2 border"><?= $dbl['nama'] ?></td>
-                                <td class="p-2 border">Rp <?= number_format($dbl['harga']) ?></td>
-                                <td class="p-2 border"><?= $dbl['jumlah'] ?></td>
-                                <td class="p-2 border">Rp <?= number_format($dbl['subtotal_item']) ?></td>
+                                <td class="p-2 border"><?= $dbp['nama'] ?></td>
+                                <td class="p-2 border">Rp <?= number_format($dbp['harga']) ?></td>
+                                <td class="p-2 border"><?= $dbp['jumlah'] ?></td>
+                                <td class="p-2 border">Rp <?= number_format($dbp['subtotal_item']) ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
                 <div class="text-right font-bold text-lg text-blue-700">
-                    Total Pesanan Ini: Rp <?= number_format($total_pesanan_ini) ?>
+                    Total Pesanan: Rp <?= number_format($total_pesanan_ini) ?>
                 </div>
             </div>
-            <?php $grand_total_penjualan += $total_pesanan_ini; // Tambahkan ke grand total
-            ?>
-        <?php } ?>
-
-        <div class="bg-amber-100 p-4 mt-8 rounded shadow-md text-right">
-            <h3 class="text-xl font-bold text-stone-800">Grand Total Penjualan: <span class="text-green-700">Rp <?= number_format($grand_total_penjualan) ?></span></h3>
+        <?php
+            $grand_total_penjualan += $total_pesanan_ini;
+        } ?>
+        <div class="text-right mt-6 p-4 bg-amber-100 rounded">
+            <h3 class="text-xl font-bold text-stone-800">Grand Total Penjualan: Rp <?= number_format($grand_total_penjualan) ?></h3>
         </div>
     <?php } ?>
 </div>

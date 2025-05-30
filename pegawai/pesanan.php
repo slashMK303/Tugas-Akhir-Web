@@ -29,8 +29,8 @@ if (isset($_POST['update_status'])) {
 }
 
 // Mengambil pesanan yang perlu diantar oleh pegawai ini
-// Tambahkan kondisi WHERE status_pengantaran != 'selesai'
-$daftar_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS nama_pembeli, p.status_pengantaran, ps.tanggal, ps.status AS status_pesanan
+// Menambahkan kolom u.alamat untuk mengambil alamat pembeli
+$daftar_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS nama_pembeli, u.alamat, p.status_pengantaran, ps.tanggal, ps.status AS status_pesanan
                                            FROM pengantaran p
                                            JOIN pesanan ps ON p.pesanan_id = ps.id
                                            JOIN users u ON ps.pembeli_id = u.id
@@ -61,6 +61,7 @@ $daftar_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS na
                     <span class="text-gray-600 text-sm">Pembeli: <?= $dp['nama_pembeli'] ?></span>
                 </div>
                 <div class="mb-3">
+                    <p class="text-gray-700">Alamat Penerima: <span class="font-medium"><?= htmlspecialchars($dp['alamat']) ?></span></p>
                     <p class="text-gray-700">Tanggal Pesanan: <span class="font-medium"><?= date('d M Y H:i', strtotime($dp['tanggal'])) ?></span></p>
                     <p class="text-gray-700">Status Pesanan (global): <span class="font-medium text-blue-600"><?= ucfirst($dp['status_pesanan']) ?></span></p>
                     <p class="text-gray-700">Status Pengantaran (Anda): <span class="font-medium text-green-600"><?= ucfirst($dp['status_pengantaran']) ?></span></p>

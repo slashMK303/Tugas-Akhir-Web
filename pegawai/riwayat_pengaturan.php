@@ -9,7 +9,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'pegawai') {
 $pegawai_id = $_SESSION['user']['id'];
 
 // Mengambil pesanan yang telah diantar oleh pegawai ini
-$riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS nama_pembeli, p.status_pengantaran, ps.tanggal
+// Menambahkan u.alamat untuk menampilkan Alamat Penerima
+$riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS nama_pembeli, u.alamat, p.status_pengantaran, ps.tanggal
                                            FROM pengantaran p
                                            JOIN pesanan ps ON p.pesanan_id = ps.id
                                            JOIN users u ON ps.pembeli_id = u.id
@@ -26,12 +27,12 @@ $riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS n
     <?php } else { ?>
         <?php while ($rp = mysqli_fetch_assoc($riwayat_pengantaran)) {
             $pesanan_id = $rp['pesanan_id'];
-            // Mengambil detail barang untuk setiap pesanan yang diantar
-            $detail_barang_pesanan = mysqli_query($conn, "SELECT dp.jumlah, dp.total AS subtotal_item, b.nama, b.harga
-                                                        FROM detail_pesanan dp
-                                                        JOIN barang b ON dp.barang_id = b.id
-                                                        WHERE dp.pesanan_id = $pesanan_id");
-            $total_pesanan = 0;
+            // Mengambil detail barang untuk setiap pesanan
+            $detail_barang_riwayat_pengantaran = mysqli_query($conn, "SELECT dp.jumlah, dp.total AS subtotal_item, b.nama, b.harga
+                                                                    FROM detail_pesanan dp
+                                                                    JOIN barang b ON dp.barang_id = b.id
+                                                                    WHERE dp.pesanan_id = $pesanan_id");
+            $total_pesanan_ini = 0;
         ?>
             <div class="bg-white rounded shadow-md p-4 mb-6 border border-gray-200">
                 <div class="flex justify-between items-center mb-3 pb-2 border-b">
@@ -39,9 +40,11 @@ $riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS n
                     <span class="text-gray-600 text-sm">Pembeli: <?= $rp['nama_pembeli'] ?></span>
                 </div>
                 <div class="mb-3">
+                    <p class="text-gray-700">Alamat Penerima: <span class="font-medium"><?= htmlspecialchars($rp['alamat']) ?></span></p>
                     <p class="text-gray-700">Tanggal Pesanan: <span class="font-medium"><?= date('d M Y H:i', strtotime($rp['tanggal'])) ?></span></p>
                     <p class="text-gray-700">Status Pengantaran: <span class="font-medium text-green-600"><?= ucfirst($rp['status_pengantaran']) ?></span></p>
                 </div>
+
                 <table class="w-full text-sm mb-4">
                     <thead class="bg-gray-50">
                         <tr>
@@ -52,8 +55,8 @@ $riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS n
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($dbp = mysqli_fetch_assoc($detail_barang_pesanan)) {
-                            $total_pesanan += $dbp['subtotal_item'];
+                        <?php while ($dbp = mysqli_fetch_assoc($detail_barang_riwayat_pengantaran)) {
+                            $total_pesanan_ini += $dbp['subtotal_item'];
                         ?>
                             <tr class="border-b">
                                 <td class="p-2 border"><?= $dbp['nama'] ?></td>
@@ -64,8 +67,8 @@ $riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS n
                         <?php } ?>
                     </tbody>
                 </table>
-                <div class="text-right font-bold text-lg text-green-700">
-                    Total Pesanan: Rp <?= number_format($total_pesanan) ?>
+                <div class="text-right font-bold text-lg text-blue-700">
+                    Total Pesanan: Rp <?= number_format($total_pesanan_ini) ?>
                 </div>
             </div>
         <?php } ?>

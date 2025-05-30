@@ -5,6 +5,7 @@ include '../config/koneksi.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $alamat = $_POST['alamat']; // Ambil input alamat
     $role = 'pembeli'; // default role
 
     // Cek apakah username sudah ada
@@ -15,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Hash password sebelum menyimpan
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Simpan ke database
-        $query = "INSERT INTO users (username, password, role) VALUES ('$username', '$hashed_password', '$role')";
+        // Simpan ke database, tambahkan kolom alamat
+        $query = "INSERT INTO users (username, password, role, alamat) VALUES ('$username', '$hashed_password', '$role', '$alamat')";
         mysqli_query($conn, $query);
 
         // Login otomatis
@@ -61,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($error)) echo "<div class='text-red-500 text-sm'>$error</div>"; ?>
             <input type="text" name="username" placeholder="Username" class="border border-gray-300 text-amber-50 w-full p-2 rounded focus:outline-amber-50" required>
             <input type="password" name="password" placeholder="Password" class="border border-gray-300 text-amber-50 w-full p-2 rounded focus:outline-amber-50" required>
+            <textarea name="alamat" placeholder="Alamat Lengkap (Jl, No Rumah, RT/RW, Kelurahan, Kecamatan, Kota)" class="border border-gray-300 text-amber-50 w-full p-2 rounded focus:outline-amber-50" rows="3" required></textarea>
             <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded cursor-pointer hover:bg-amber-600">Daftar</button>
             <p class="text-center text-amber-50 text-sm">Sudah punya akun? <a href="login.php" class="text-amber-500 hover:underline">Login</a></p>
         </form>
