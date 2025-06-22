@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2025 at 01:51 PM
+-- Generation Time: Jun 22, 2025 at 02:48 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,16 +40,9 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama`, `harga`, `stok`, `gambar`) VALUES
-(6, 'Pop Mie', 5000.00, 16, '1747736770476.png'),
-(7, 'Minyak Bimoli 1L', 20000.00, 11, '1747691071488.png'),
-(8, 'Beras 25kg', 40000.00, 0, '1747741912181.png'),
-(9, 'Indomie', 3000.00, 20, 'images.jpg'),
-(10, 'Ka', 1000.00, 10, 'download1.jpg'),
-(11, 'oajdjsi', 10000.00, 8, 'download.jpg'),
-(12, 'jjjjj', 5000.00, 50, 'images.jpg'),
-(13, 'oaksodk', 10000.00, 40, 'download1.jpg'),
-(14, 'oaskdokaok', 20000.00, 20, 'download1.jpg'),
-(15, 'aksdkja', 90000.00, 50, 'download1.jpg');
+(6, 'Nabati', 2000.00, 7, '1747738031000.png'),
+(7, 'Gulaku', 20000.00, 8, '1747691071488.png'),
+(8, 'Latdaku', 1000.00, 7, '1747741912181.png');
 
 -- --------------------------------------------------------
 
@@ -70,11 +63,15 @@ CREATE TABLE `detail_pesanan` (
 --
 
 INSERT INTO `detail_pesanan` (`id`, `pesanan_id`, `barang_id`, `jumlah`, `total`) VALUES
-(14, 14, 6, 1, 5000.00),
-(15, 14, 11, 1, 10000.00),
-(16, 14, 13, 5, 50000.00),
-(17, 15, 7, 2, 40000.00),
-(18, 15, 13, 5, 50000.00);
+(19, 16, 7, 1, 20000.00),
+(22, 18, 6, 1, 2000.00),
+(23, 18, 7, 1, 20000.00),
+(24, 19, 6, 1, 2000.00),
+(25, 20, 8, 1, 1000.00),
+(26, 21, 6, 1, 2000.00),
+(27, 21, 7, 1, 20000.00),
+(28, 21, 8, 1, 1000.00),
+(29, 22, 8, 1, 1000.00);
 
 -- --------------------------------------------------------
 
@@ -89,14 +86,6 @@ CREATE TABLE `keranjang` (
   `jumlah` int(11) DEFAULT NULL,
   `tanggal_ditambahkan` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id`, `pembeli_id`, `barang_id`, `jumlah`, `tanggal_ditambahkan`) VALUES
-(7, 10, 7, 1, '2025-05-29 18:21:58'),
-(8, 10, 6, 1, '2025-05-29 18:22:01');
 
 -- --------------------------------------------------------
 
@@ -116,8 +105,9 @@ CREATE TABLE `pengantaran` (
 --
 
 INSERT INTO `pengantaran` (`id`, `pesanan_id`, `pegawai_id`, `status_pengantaran`) VALUES
-(12, 14, 13, 'selesai'),
-(13, 15, 13, 'selesai');
+(14, 16, 13, 'selesai'),
+(15, 22, 13, 'selesai'),
+(16, 20, 13, 'selesai');
 
 -- --------------------------------------------------------
 
@@ -137,8 +127,12 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id`, `pembeli_id`, `status`, `tanggal`) VALUES
-(14, 10, 'selesai', '2025-05-29 18:08:52'),
-(15, 10, 'selesai', '2025-05-29 18:15:21');
+(16, 14, 'selesai', '2025-05-30 21:09:51'),
+(18, 14, 'menunggu', '2025-06-10 07:10:21'),
+(19, 14, 'menunggu', '2025-06-10 08:00:14'),
+(20, 14, 'selesai', '2025-06-10 08:03:18'),
+(21, 14, 'selesai', '2025-06-10 08:03:38'),
+(22, 14, 'selesai', '2025-06-22 14:42:34');
 
 -- --------------------------------------------------------
 
@@ -150,17 +144,19 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `role` enum('admin','pegawai','pembeli') DEFAULT NULL
+  `role` enum('admin','pegawai','pembeli') DEFAULT NULL,
+  `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(10, 'test', '$2y$10$XOJH3BUDt4TBsAAzePxEi.SacGTYje7IXb6OoPgGBE4LJ6TVaYUoy', 'pembeli'),
-(11, 'admin', '$2y$10$Gf6dVfgZ5698dZdB8Fc9x..FAqryDxJHR6r3FKP4YOeG99Teq9WIq', 'admin'),
-(13, 'jokok', '$2y$10$jCJl4CfpbyFyL4a7qwDDT.L8lnLH7JZLiKoLeu7sh1ztbK0bel/PK', 'pegawai');
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `alamat`) VALUES
+(11, 'admin', '$2y$10$Gf6dVfgZ5698dZdB8Fc9x..FAqryDxJHR6r3FKP4YOeG99Teq9WIq', 'admin', NULL),
+(13, 'joko', '$2y$10$eamt/9WDW1qTW2wmh2jmdumlwK7vkXUTJkXG53gUttEx6itcUVR4W', 'pegawai', NULL),
+(14, 'jamal', '$2y$10$ikjqhk1Ji5IZxU8y/4UA1eWdFkbOy1pHnOIIYjBZYdOTzSGLJFrHa', 'pembeli', 'solo'),
+(15, 'test', '$2y$10$NC8oOyk7LLr9aTGZjHibDeQQn3EaYcKnieX/PG/lUiNmDay3iNqK2', 'pegawai', NULL);
 
 --
 -- Indexes for dumped tables
@@ -223,31 +219,31 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `pengantaran`
 --
 ALTER TABLE `pengantaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
