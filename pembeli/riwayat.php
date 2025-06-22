@@ -1,7 +1,6 @@
 <?php
 include '../config/koneksi.php';
 
-// Cek apakah user sudah login
 session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'pembeli') {
     header("Location: ../auth/login.php");
@@ -55,6 +54,7 @@ $riwayat_pesanan = mysqli_query($conn, "SELECT ps.id AS pesanan_id, ps.tanggal, 
             <?php } else { ?>
                 <?php while ($rp = mysqli_fetch_assoc($riwayat_pesanan)) {
                     $pesanan_id = $rp['pesanan_id'];
+
                     // Mengambil detail barang untuk setiap pesanan
                     $detail_barang_riwayat = mysqli_query($conn, "SELECT dp.jumlah, dp.total AS subtotal_item, b.nama, b.harga
                                                                     FROM detail_pesanan dp

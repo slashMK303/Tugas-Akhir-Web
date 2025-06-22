@@ -2,7 +2,7 @@
 include '../config/koneksi.php';
 session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'pegawai') {
-    header("Location: ../auth/login.php"); // Mengarahkan ke login.php di folder auth
+    header("Location: ../auth/login.php");
     exit;
 }
 

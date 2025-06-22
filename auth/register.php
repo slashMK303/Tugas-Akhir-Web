@@ -5,7 +5,7 @@ include '../config/koneksi.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $alamat = $_POST['alamat']; // Ambil input alamat
+    $alamat = $_POST['alamat'];
     $role = 'pembeli'; // default role
 
     // Cek apakah username sudah ada
