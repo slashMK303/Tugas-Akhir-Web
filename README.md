@@ -45,7 +45,7 @@ Karena detail instalasi tidak tersedia, berikut adalah langkah-langkah umum yang
     * Buat database baru di server database Anda.
     * Perbarui file konfigurasi database di dalam folder `config` dengan kredensial database Anda (nama database, username, password).
 4.  **Impor Database:**
-    Jika ada file dump database (misalnya `.sql`), impor file tersebut ke database yang telah Anda buat.
+     `.sql` impor file tersebut ke database yang telah Anda buat.
 5.  **Akses Aplikasi:**
     Buka browser web Anda dan navigasikan ke direktori proyek di server lokal Anda (misalnya `http://localhost/Tugas-Akhir-Web`).
 
