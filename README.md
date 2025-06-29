@@ -12,8 +12,7 @@ Ini adalah repositori untuk proyek "Tugas-Akhir-Web". Proyek ini adalah sebuah a
 
 ## Teknologi yang Digunakan
 
-* **PHP:** Bahasa pemrograman utama yang digunakan untuk logika server-side (99.4%).
-* **CSS:** Digunakan untuk styling dan tampilan antarmuka pengguna (0.6%).
+* **PHP**
 
 ## Struktur Proyek
 
