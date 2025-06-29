@@ -1,43 +1,60 @@
-# Sistem Informasi Tugas Akhir 🎓
+# Tugas-Akhir-Web
 
-![Screenshot Dashboard](https://raw.githubusercontent.com/slashMK303/Tugas-Akhir-Web/main/screenshot/dashboard.png)  
-*Aplikasi manajemen tugas akhir berbasis web untuk perguruan tinggi.*
+Ini adalah repositori untuk proyek "Tugas-Akhir-Web" yang dikembangkan oleh slashMK303. Proyek ini adalah sebuah aplikasi web yang dibangun dengan PHP dan CSS.
 
-## 📋 Deskripsi
-Sistem ini dirancang untuk membantu proses pengelolaan tugas akhir mahasiswa, mulai dari pengajuan judul, bimbingan, hingga penilaian oleh dosen.
+## Fitur Utama (Berdasarkan Struktur Proyek)
 
-## ✨ Fitur Utama
-- **Multi-role user** (Admin, Dosen, Mahasiswa)
-- **Pengajuan proposal tugas akhir**
-- **Jadwal bimbingan online**
-- **Upload dokumen** (proposal, bab, laporan akhir)
-- **Sistem penilaian** oleh dosen pembimbing
-- **Notifikasi email** untuk setiap update
-- **Generate laporan** dalam format PDF
+Meskipun tidak ada deskripsi fitur yang eksplisit, analisis struktur folder dan file menunjukkan aplikasi ini kemungkinan memiliki fitur-fitur utama berikut:
 
-## 🛠 Teknologi yang Digunakan
-**Frontend:**
-- TailwindCSS 4
+* **Sistem Administrasi:** Modul untuk pengelolaan data dan fungsi oleh administrator.
+* **Autentikasi Pengguna:** Fungsionalitas untuk login, registrasi, dan manajemen sesi pengguna.
+* **Manajemen Data Pegawai:** Sistem untuk mengelola informasi dan data terkait karyawan.
+* **Manajemen Data Pembeli:** Sistem untuk mengelola informasi dan data terkait pelanggan atau pembeli.
+* **Tampilan Produk/Barang:** Fitur untuk menampilkan daftar atau detail produk/barang yang tersedia.
 
-**Backend:**
-- CodeIgniter 3
-- MySQL
+## Teknologi yang Digunakan
 
-**Libraries:**
-- PHPMailer (untuk notifikasi email)
-- mpdf (untuk generate PDF)
-- Chart.js (untuk statistik)
+* **PHP:** Bahasa pemrograman utama yang digunakan untuk logika server-side (99.4%).
+* **CSS:** Digunakan untuk styling dan tampilan antarmuka pengguna (0.6%).
 
-## 🖼 Screenshots
-| Halaman Login | Dashboard Admin |
-|--------------|----------------|
-| ![Login](https://raw.githubusercontent.com/slashMK303/Tugas-Akhir-Web/main/screenshot/login.png) | ![Admin](https://raw.githubusercontent.com/slashMK303/Tugas-Akhir-Web/main/screenshot/admin.png) |
+## Struktur Proyek
 
-| Dashboard Dosen | Dashboard Mahasiswa |
-|----------------|--------------------|
-| ![Dosen](https://raw.githubusercontent.com/slashMK303/Tugas-Akhir-Web/main/screenshot/dosen.png) | ![Mahasiswa](https://raw.githubusercontent.com/slashMK303/Tugas-Akhir-Web/main/screenshot/mahasiswa.png) |
+Repositori ini mencakup folder dan file berikut:
 
-## ⚙️ Instalasi
-1. Clone repository:
-   ```bash
-   git clone https://github.com/slashMK303/Tugas-Akhir-Web.git
+* `/admin`: Berisi file-file yang berkaitan dengan panel atau fungsionalitas administrator.
+* `/asset/img`: Direktori untuk menyimpan aset gambar.
+* `/auth`: Berisi file-file terkait sistem autentikasi (login, register).
+* `/config`: Berisi file konfigurasi aplikasi.
+* `/css`: Direktori untuk file stylesheet CSS.
+* `/pegawai`: Berisi file-file yang terkait dengan manajemen data pegawai.
+* `/pembeli`: Berisi file-file yang terkait dengan manajemen data pembeli.
+* `README.md`: Berkas ini (deskripsi proyek).
+* `index.php`: Halaman utama atau titik masuk aplikasi web.
+* `lihat_barang.php`: File untuk menampilkan informasi barang/produk.
+
+## Instalasi (Asumsi Umum untuk Proyek PHP)
+
+Karena detail instalasi tidak tersedia, berikut adalah langkah-langkah umum yang mungkin diperlukan untuk menjalankan proyek PHP semacam ini:
+
+1.  **Kloning Repositori:**
+    ```bash
+    git clone [https://github.com/slashMK303/Tugas-Akhir-Web.git](https://github.com/slashMK303/Tugas-Akhir-Web.git)
+    cd Tugas-Akhir-Web
+    ```
+2.  **Siapkan Lingkungan Server Lokal:**
+    Pastikan Anda memiliki server web (misalnya Apache atau Nginx) dengan PHP terinstal, serta database (misalnya MySQL atau MariaDB). Anda bisa menggunakan XAMPP, WAMP, atau Laragon.
+3.  **Konfigurasi Database:**
+    * Buat database baru di server database Anda.
+    * Perbarui file konfigurasi database di dalam folder `config` (jika ada) dengan kredensial database Anda (nama database, username, password).
+4.  **Impor Database (Jika Ada):**
+    Jika ada file dump database (misalnya `.sql`), impor file tersebut ke database yang telah Anda buat.
+5.  **Akses Aplikasi:**
+    Buka browser web Anda dan navigasikan ke direktori proyek di server lokal Anda (misalnya `http://localhost/Tugas-Akhir-Web`).
+
+## Penggunaan
+
+Detail penggunaan spesifik aplikasi tidak tersedia. Setelah instalasi berhasil, Anda dapat menjelajahi halaman `index.php` dan bagian-bagian lain seperti `admin`, `pegawai`, atau `pembeli` untuk memahami alur kerja aplikasi.
+
+## Kontribusi
+
+Karena tidak ada panduan kontribusi yang eksplisit, silakan hubungi pemilik repositori (`slashMK303`) jika Anda tertarik untuk berkontribusi.
