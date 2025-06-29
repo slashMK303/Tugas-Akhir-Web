@@ -54,7 +54,3 @@ Karena detail instalasi tidak tersedia, berikut adalah langkah-langkah umum yang
 ## Penggunaan
 
 Detail penggunaan spesifik aplikasi tidak tersedia. Setelah instalasi berhasil, Anda dapat menjelajahi halaman `index.php` dan bagian-bagian lain seperti `admin`, `pegawai`, atau `pembeli` untuk memahami alur kerja aplikasi.
-
-## Kontribusi
-
-Karena tidak ada panduan kontribusi yang eksplisit, silakan hubungi pemilik repositori (`slashMK303`) jika Anda tertarik untuk berkontribusi.
