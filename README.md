@@ -4,8 +4,6 @@ Ini adalah repositori untuk proyek "Tugas-Akhir-Web". Proyek ini adalah sebuah a
 
 ## Fitur Utama
 
-Meskipun tidak ada deskripsi fitur yang eksplisit, analisis struktur folder dan file menunjukkan aplikasi ini kemungkinan memiliki fitur-fitur utama berikut:
-
 * **Sistem Administrasi:** Modul untuk pengelolaan data dan fungsi oleh administrator.
 * **Autentikasi Pengguna:** Fungsionalitas untuk login, registrasi, dan manajemen sesi pengguna.
 * **Manajemen Data Pegawai:** Sistem untuk mengelola informasi dan data terkait karyawan.
