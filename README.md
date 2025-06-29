@@ -38,7 +38,7 @@ Karena detail instalasi tidak tersedia, berikut adalah langkah-langkah umum yang
 
 1.  **Kloning Repositori:**
     ```bash
-    git clone [https://github.com/slashMK303/Tugas-Akhir-Web.git](https://github.com/slashMK303/Tugas-Akhir-Web.git)
+    git clone https://github.com/slashMK303/Tugas-Akhir-Web.git
     cd Tugas-Akhir-Web
     ```
 2.  **Siapkan Lingkungan Server Lokal:**
