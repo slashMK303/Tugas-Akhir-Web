@@ -2,7 +2,7 @@
 
 Ini adalah repositori untuk proyek "Tugas-Akhir-Web" yang dikembangkan oleh slashMK303. Proyek ini adalah sebuah aplikasi web yang dibangun dengan PHP dan CSS.
 
-## Fitur Utama (Berdasarkan Struktur Proyek)
+## Fitur Utama
 
 Meskipun tidak ada deskripsi fitur yang eksplisit, analisis struktur folder dan file menunjukkan aplikasi ini kemungkinan memiliki fitur-fitur utama berikut:
 
