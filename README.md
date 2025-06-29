@@ -43,7 +43,7 @@ Karena detail instalasi tidak tersedia, berikut adalah langkah-langkah umum yang
     Pastikan Anda memiliki server web (misalnya Apache atau Nginx) dengan PHP terinstal, serta database (misalnya MySQL atau MariaDB). Anda bisa menggunakan XAMPP, WAMP, atau Laragon.
 3.  **Konfigurasi Database:**
     * Buat database baru di server database Anda.
-    * Perbarui file konfigurasi database di dalam folder `config` (jika ada) dengan kredensial database Anda (nama database, username, password).
+    * Perbarui file konfigurasi database di dalam folder `config` dengan kredensial database Anda (nama database, username, password).
 4.  **Impor Database (Jika Ada):**
     Jika ada file dump database (misalnya `.sql`), impor file tersebut ke database yang telah Anda buat.
 5.  **Akses Aplikasi:**
