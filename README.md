@@ -1,6 +1,6 @@
 # Tugas-Akhir-Web
 
-Ini adalah repositori untuk proyek "Tugas-Akhir-Web" yang dikembangkan oleh slashMK303. Proyek ini adalah sebuah aplikasi web yang dibangun dengan PHP dan CSS.
+Ini adalah repositori untuk proyek "Tugas-Akhir-Web". Proyek ini adalah sebuah aplikasi web yang dibangun dengan PHP dan CSS.
 
 ## Fitur Utama
 
