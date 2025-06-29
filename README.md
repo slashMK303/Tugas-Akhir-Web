@@ -32,7 +32,7 @@ Repositori ini mencakup folder dan file berikut:
 * `index.php`: Halaman utama atau titik masuk aplikasi web.
 * `lihat_barang.php`: File untuk menampilkan informasi barang/produk.
 
-## Instalasi (Asumsi Umum untuk Proyek PHP)
+## Instalasi
 
 Karena detail instalasi tidak tersedia, berikut adalah langkah-langkah umum yang mungkin diperlukan untuk menjalankan proyek PHP semacam ini:
 
