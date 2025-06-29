@@ -8,8 +8,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'pembeli') {
 }
 $pembeli_id = $_SESSION['user']['id'];
 
-// Mengambil data pesanan utama untuk pembeli
-// Menambahkan u.alamat untuk menampilkan Alamat Penerima
+// Mengambil data pesanan untuk pembeli
 $riwayat_pesanan = mysqli_query($conn, "SELECT ps.id AS pesanan_id, ps.tanggal, ps.status, p.status_pengantaran, u.alamat
                                         FROM pesanan ps
                                         LEFT JOIN pengantaran p ON ps.id = p.pesanan_id

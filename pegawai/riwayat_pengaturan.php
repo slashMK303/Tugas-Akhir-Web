@@ -9,7 +9,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'pegawai') {
 $pegawai_id = $_SESSION['user']['id'];
 
 // Mengambil pesanan yang telah diantar oleh pegawai ini
-// Menambahkan u.alamat untuk menampilkan Alamat Penerima
 $riwayat_pengantaran = mysqli_query($conn, "SELECT p.pesanan_id, u.username AS nama_pembeli, u.alamat, p.status_pengantaran, ps.tanggal
                                            FROM pengantaran p
                                            JOIN pesanan ps ON p.pesanan_id = ps.id
